@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(morgan("combined"));
 
 
-// Non-existing and API Error Handling
+// Non-existing routes and API Error Handling
 app.all("*", (req, res, next) => {
   res.status(404).json({
     status: "fail",
@@ -22,7 +22,7 @@ app.get('/',(req,res)=>{
     res.send('HIIIIIIIIIIIIIII');
 });
 
-// ERROR HANDLING Middleware
+// Global ERROR HANDLING Middleware
 app.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "ErrorHappend";
